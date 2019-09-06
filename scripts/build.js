@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const chalk = require('chalk')
 
-const webpackConfig = require('../src')(process.env.NODE_ENV || 'production')
+const webpackConfig = require('../src').webpackConfig(process.env.NODE_ENV || 'production')
 const { logMessage, compilerPromise } = require('./helpers')
 
 const build = async () => {

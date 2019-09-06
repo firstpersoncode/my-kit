@@ -33,7 +33,7 @@ const serverConfig = {
     locales: constants.paths.LOCALES,
 }
 
-module.exports = (env = 'production') => {
+exports.webpackConfig = (env = 'production') => {
     if (env === 'development' || env === 'dev') {
         process.env.NODE_ENV = 'development'
 
@@ -72,4 +72,3 @@ module.exports = (env = 'production') => {
 
 exports.serveApp = serveApp
 exports.config = config
-// exports.default = config
