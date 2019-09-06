@@ -72,4 +72,4 @@ module.exports = (env = 'production') => {
 
 exports.serveApp = serveApp
 exports.config = config
-exports.default = config
+// exports.default = config
