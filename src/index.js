@@ -1,4 +1,5 @@
 const path = require('path')
+const serveApp = require('./serveApp')
 const config = require('./config')
 
 const constants = require('./helpers/constants')
@@ -69,9 +70,6 @@ module.exports = (env = 'production') => {
     ]
 }
 
-// const serveApp = require('./serveApp')
-// const createConfig = require('./config')
-//
-// exports.serveApp = serveApp
-// exports.createConfig = createConfig
-// exports.default = createConfig
+exports.serveApp = serveApp
+exports.config = config
+exports.default = config

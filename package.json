@@ -1,6 +1,6 @@
 {
-  "name": "my-kit",
-  "version": "1.0.0",
+  "name": "@nassermaronie/my-kit",
+  "version": "1.0.1",
   "description": "",
   "scripts": {
     "test": "jest --coverage --runInBand",
@@ -11,6 +11,8 @@
   },
   "main": "src/index.js",
   "keywords": [
+    "ssr",
+    "setup",
     "webpack",
     "config",
     "generator",
