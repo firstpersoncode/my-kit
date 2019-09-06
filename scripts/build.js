@@ -1,11 +1,16 @@
 const webpack = require('webpack')
 const chalk = require('chalk')
+const rimraf = require('rimraf')
 
 const webpackConfig = require('../src').webpackConfig(process.env.NODE_ENV || 'production')
 const { logMessage, compilerPromise } = require('./helpers')
 
 const build = async () => {
     const [clientConfig, serverConfig] = webpackConfig
+
+    rimraf.sync(clientConfig.output.path)
+    rimraf.sync(serverConfig.output.path)
+
     const multiCompiler = webpack([clientConfig, serverConfig])
 
     const clientCompiler = multiCompiler.compilers.find((compiler) => compiler.name === 'client')
