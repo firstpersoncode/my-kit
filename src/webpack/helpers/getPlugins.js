@@ -9,7 +9,7 @@ const WriteFileWebpackPlugin = require('write-file-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CopyPlugin = require('copy-webpack-plugin')
 
-const constants = require('./constants')
+const constants = require('../../constants')
 
 const { EnvironmentPlugin, DefinePlugin, IgnorePlugin, HotModuleReplacementPlugin } = webpack
 

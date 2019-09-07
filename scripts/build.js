@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const chalk = require('chalk')
 const rimraf = require('rimraf')
 
-const webpackConfig = require('../src').webpackConfig(process.env.NODE_ENV || 'production')
+const webpackConfig = require('../src/webpack').webpackConfig(process.env.NODE_ENV || 'production')
 const { logMessage, compilerPromise } = require('./helpers')
 
 const build = async () => {

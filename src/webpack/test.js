@@ -1,8 +1,8 @@
 const path = require('path')
 const { EnvironmentPlugin } = require('webpack')
 
-const constants = require('./helpers/constants')
-const testConfig = require('./config')
+const constants = require('../constants')
+const createConfig = require('./createConfig')
 
 jest.mock('webpack', () => ({
     EnvironmentPlugin: jest.fn(),
@@ -33,17 +33,17 @@ const testOptions = {
     output: constants.paths.BUILD_,
 }
 
-describe('testConfig', () => {
+describe('createConfig', () => {
     it('should be a function', () => {
-        expect(typeof testConfig).toBe('function')
+        expect(typeof createConfig).toBe('function')
     })
 
     it('should return a webpack config object', () => {
-        expect(typeof testConfig(testOptions)).toBe('object')
+        expect(typeof createConfig(testOptions)).toBe('object')
     })
 
     it('should bundle multiple entries', () => {
-        const config = testConfig({
+        const config = createConfig({
             ...testOptions,
             input: {
                 ...testOptions.input,
@@ -78,7 +78,7 @@ describe('testConfig', () => {
 
     it('should error if multiple entries are in different directories and no rootDir provided', () => {
         const unsureAboutAliases = () =>
-            testConfig({
+            createConfig({
                 ...testOptions,
                 input: {
                     ...testOptions.input,
@@ -90,13 +90,13 @@ describe('testConfig', () => {
     })
 
     it('should work without environment variables', () => {
-        testConfig(testOptions)
+        createConfig(testOptions)
 
         expect(EnvironmentPlugin).toHaveBeenCalledWith({})
     })
 
     it('should set default environment variables', () => {
-        testConfig({
+        createConfig({
             ...testOptions,
             env: {
                 NODE_ENV: 'production',

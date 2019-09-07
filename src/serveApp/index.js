@@ -4,7 +4,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const manifestHelpers = require('express-manifest-helpers')
 
-const constants = require('../helpers/constants')
+const constants = require('../constants')
 const errorHandler = require('./middleware/errorHandler')
 const serverRenderer = require('./middleware/serverRenderer')
 const addStore = require('./middleware/addStore')

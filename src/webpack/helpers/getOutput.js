@@ -1,5 +1,5 @@
 const path = require('path')
-const constants = require('./constants')
+const constants = require('../../constants')
 
 module.exports = (output, publicPath, isServer) => ({
     path: path.resolve(constants.CWD, output),

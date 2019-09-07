@@ -1,5 +1,5 @@
 const path = require('path')
-const constants = require('./constants')
+const constants = require('../../constants')
 
 module.exports = (input) => {
     const entry = {}
