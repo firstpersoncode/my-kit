@@ -6,9 +6,6 @@ const getResolver = require('./helpers/getResolver')
 const getRootDir = require('./helpers/getRootDir')
 const validateOptions = require('./helpers/validateOptions')
 
-const baseClientConfig = require('./baseClientConfig')
-const baseServerConfig = require('./baseServerConfig')
-
 module.exports = (options) => {
     validateOptions(options)
     const {
@@ -16,6 +13,7 @@ module.exports = (options) => {
         input,
         output,
         rootDir,
+        tsconfig,
         publicPath,
         locales,
         isServer,
@@ -29,7 +27,6 @@ module.exports = (options) => {
 
     return {
         mode,
-        ...(isServer ? baseServerConfig : baseClientConfig),
         ...(mode === 'development'
             ? {
                   performance: {
@@ -48,7 +45,7 @@ module.exports = (options) => {
         output: getOutput(output, publicPath, isServer),
         module: {
             rules: [
-                ...getLoaders.shared(mode),
+                ...getLoaders.shared(mode, tsconfig),
                 ...(isServer
                     ? getLoaders.server(mode, omitSourceMap, loaders)
                     : getLoaders.client(mode, omitSourceMap, loaders)),

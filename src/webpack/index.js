@@ -1,6 +1,8 @@
 const path = require('path')
 const constants = require('../constants')
 const createConfig = require('./createConfig')
+const baseClientConfig = require('./baseClientConfig')
+const baseServerConfig = require('./baseServerConfig')
 
 const sharedConfig = {
     resolve: {
@@ -8,12 +10,14 @@ const sharedConfig = {
         modules: constants.paths.resolveModules,
     },
     publicPath: constants.paths.PUBLIC_PATH,
+    tsconfig: constants.paths.TS_CONFIG,
     env: {
         NODE_ENV: process.env.NODE_ENV,
     },
 }
 
 const clientConfig = {
+    ...baseClientConfig,
     input: {
         bundle: path.resolve(constants.paths.CLIENT, 'index.tsx'),
     },
@@ -22,6 +26,7 @@ const clientConfig = {
 }
 
 const serverConfig = {
+    ...baseServerConfig,
     isServer: true,
     input: {
         server: path.resolve(constants.paths.SERVER, 'index.tsx'),

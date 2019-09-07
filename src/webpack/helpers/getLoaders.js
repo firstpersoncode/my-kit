@@ -1,6 +1,7 @@
+const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
-
+const constants = require('../../constants')
 const cssRegex = /\.css$/
 const cssModuleRegex = /\.module\.css$/
 
@@ -13,11 +14,13 @@ const getLocalIdentWorkaround = (context, localIdentName, localName, options) =>
     return getCSSModuleLocalIdent(context, localIdentName, localName, options)
 }
 
-const babelLoader = (mode) => ({
+const babelLoader = (mode, tsconfig) => ({
     test: /\.(js|jsx|ts|tsx|mjs)$/,
     exclude: /node_modules/,
     loader: require.resolve('babel-loader'),
     options: {
+        transpileOnly: true,
+        configFile: path.resolve(constants.CWD, tsconfig),
         plugins: [
             [
                 require.resolve('babel-plugin-named-asset-import'),

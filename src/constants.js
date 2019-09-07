@@ -14,10 +14,19 @@ const paths = {
     APP: resolveApp('src/app'),
     CLIENT: resolveApp('src/app/client'),
     SERVER: resolveApp('src/app/server'),
+    STORE: resolveApp('src/app/store'),
+    TS_CONFIG: resolveApp('tsconfig.json'),
     PUBLIC_PATH: '/',
 }
 
-paths.resolveModules = [paths.CLIENT, paths.SERVER, paths.APP, paths.SRC, 'node_modules']
+paths.resolveModules = [
+    paths.CLIENT,
+    paths.SERVER,
+    paths.STORE,
+    paths.APP,
+    paths.SRC,
+    'node_modules',
+]
 
 exports.paths = paths
 

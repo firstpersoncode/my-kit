@@ -1,6 +1,6 @@
 {
   "name": "@nassermaronie/my-kit",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "scripts": {
     "test": "jest --coverage --runInBand",

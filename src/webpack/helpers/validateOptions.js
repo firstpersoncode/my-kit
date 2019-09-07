@@ -3,7 +3,7 @@ module.exports = (options) => {
         throw new Error('Invalid config options - must be an object')
     }
 
-    const requiredOptions = ['mode', 'resolve', 'input', 'output', 'publicPath']
+    const requiredOptions = ['mode', 'resolve', 'input', 'output', 'tsconfig', 'publicPath']
     const errors = []
     requiredOptions.forEach((option) => {
         if (!(option in options)) {
