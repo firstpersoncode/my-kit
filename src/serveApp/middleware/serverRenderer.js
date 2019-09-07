@@ -34,14 +34,13 @@ const html = ({ css, helmetCtx, scripts, state, content }) => `
 </html>
 `
 
-const serverRenderer = (render) => (req, res) => {
+const serverRenderer = (store, render) => (req, res) => {
     const content = render({
         routerCtx,
         helmetCtx,
-        store: res.locals.store,
         location: req.url,
     })
-    const state = JSON.stringify(res.locals.store.getState())
+    const state = JSON.stringify(store.getState())
     return res.send(
         html({
             css: [res.locals.assetPath('bundle.css'), res.locals.assetPath('vendor.css')],

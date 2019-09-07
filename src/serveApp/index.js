@@ -7,7 +7,7 @@ const manifestHelpers = require('express-manifest-helpers')
 const constants = require('../constants')
 const errorHandler = require('./middleware/errorHandler')
 const serverRenderer = require('./middleware/serverRenderer')
-const addStore = require('./middleware/addStore')
+// const addStore = require('./middleware/addStore')
 // const webhookVerification = require('./middleware/webhookVerification')
 const app = express()
 
@@ -30,7 +30,7 @@ module.exports = (options) => {
     // // It's probably a good idea to serve these static assets with Nginx or Apache as well:
     // app.get('/locales/:locale/:ns.json', i18nextXhr)
 
-    app.use(addStore(store))
+    // app.use(addStore(store))
 
     const manifestPath = path.join(constants.paths.BUILD_CLIENT, constants.paths.PUBLIC_PATH)
 
@@ -40,7 +40,7 @@ module.exports = (options) => {
         })
     )
 
-    app.use(serverRenderer(render))
+    app.use(serverRenderer(store, render))
 
     app.use(errorHandler)
 
