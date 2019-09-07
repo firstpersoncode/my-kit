@@ -1,6 +1,8 @@
-const thunk = require('redux-thunk')
-const { createStore, applyMiddleware, compose } = require('redux')
+const thunk = require('redux-thunk').default
+const redux = require('redux')
 const createReducers = require('./reducers')
+
+const { createStore, applyMiddleware, compose } = redux
 
 module.exports = ({ initialState, middleware = [], reducers = createReducers({}) }) => {
     const devtools =
@@ -15,14 +17,6 @@ module.exports = ({ initialState, middleware = [], reducers = createReducers({})
         initialState,
         composeEnhancers(applyMiddleware(...[thunk].concat(...middleware)))
     )
-
-    if (process.env.NODE_ENV !== 'production') {
-        if (module.hot) {
-            module.hot.accept('./reducers', () =>
-                store.replaceReducer(require('./reducers').default)
-            )
-        }
-    }
 
     return store
 }
